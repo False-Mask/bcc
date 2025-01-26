@@ -1138,7 +1138,7 @@ static int bpf_try_perf_event_open_with_probe(const char *name, uint64_t offs,
                  PERF_FLAG_FD_CLOEXEC);
 }
 
-#define DEBUGFS_TRACEFS "/sys/kernel/debug/tracing"
+#define DEBUGFS_TRACEFS "/sys/kernel/tracing"
 #define TRACEFS "/sys/kernel/tracing"
 
 static const char *get_tracefs_path()

@@ -1089,7 +1089,7 @@ bool fentry_can_attach(const char *name, const char *mod)
 	return id > 0 && fentry_try_attach(id);
 }
 
-#define DEBUGFS "/sys/kernel/debug/tracing"
+#define DEBUGFS "/sys/kernel/tracing"
 #define TRACEFS "/sys/kernel/tracing"
 
 static bool use_debugfs(void)

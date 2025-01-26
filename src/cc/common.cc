@@ -211,7 +211,7 @@ static inline field_kind_t _get_field_kind(std::string const& line,
   return field_kind_t::regular;
 }
 
-#define DEBUGFS_TRACEFS "/sys/kernel/debug/tracing"
+#define DEBUGFS_TRACEFS "/sys/kernel/tracing"
 #define TRACEFS "/sys/kernel/tracing"
 
 std::string tracefs_path() {

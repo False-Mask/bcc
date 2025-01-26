@@ -724,7 +724,7 @@ class BPF(object):
                 raise e
             blacklist = set([])
 
-        avail_filter_file = "%s/tracing/available_filter_functions" % DEBUGFS
+        avail_filter_file = "%s/available_filter_functions" % TRACEFS
         try:
             with open(avail_filter_file, "rb") as avail_filter_f:
                 avail_filter = set([line.rstrip().split()[0] for line in avail_filter_f])
@@ -1067,7 +1067,7 @@ class BPF(object):
         provided regular expression.
 
         To obtain a list of kernel tracepoints, use the tplist tool or cat the
-        file /sys/kernel/debug/tracing/available_events.
+        file /sys/kernel/tracing/available_events.
 
         Examples:
             BPF(text).attach_tracepoint(tp="sched:sched_switch", fn_name="on_switch")
