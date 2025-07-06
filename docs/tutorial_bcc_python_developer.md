@@ -34,7 +34,7 @@ There are six things to learn from this:
 
 1. ```void *ctx```: ctx has arguments, but since we aren't using them here, we'll just cast it to ```void *```.
 
-1. ```bpf_trace_printk()```: A simple kernel facility for printf() to the common trace_pipe (/sys/kernel/debug/tracing/trace_pipe). This is ok for some quick examples, but has limitations: 3 args max, 1 %s only, and trace_pipe is globally shared, so concurrent programs will have clashing output. A better interface is via BPF_PERF_OUTPUT(), covered later.
+1. ```bpf_trace_printk()```: A simple kernel facility for printf() to the common trace_pipe (/sys/kernel/tracing/trace_pipe). This is ok for some quick examples, but has limitations: 3 args max, 1 %s only, and trace_pipe is globally shared, so concurrent programs will have clashing output. A better interface is via BPF_PERF_OUTPUT(), covered later.
 
 1. ```return 0;```: Necessary formality (if you want to know why, see [#139](https://github.com/iovisor/bcc/issues/139)).
 
@@ -513,7 +513,7 @@ BPF_PERF_OUTPUT(events);
 TRACEPOINT_PROBE(syscalls, sys_enter_setuid) {
     struct data_t data = {};
 
-    // Check /sys/kernel/debug/tracing/events/syscalls/sys_enter_setuid/format
+    // Check /sys/kernel/tracing/events/syscalls/sys_enter_setuid/format
     // for the args format
     data.uid = args->uid;
     data.ts = bpf_ktime_get_ns();
@@ -556,7 +556,7 @@ tracepoint arguments. The comment above says where you can see that structure.
 Eg:  
     
     ```
-    # sudo cat /sys/kernel/debug/tracing/events/syscalls/sys_enter_setuid/format
+    # sudo cat /sys/kernel/tracing/events/syscalls/sys_enter_setuid/format
     name: sys_enter_setuid
     ID: 256
     format:

@@ -29,7 +29,7 @@ BPF_PERF_OUTPUT(events);
 TRACEPOINT_PROBE(syscalls, sys_enter_setuid) {
     struct data_t data = {};
 
-    // Check /sys/kernel/debug/tracing/events/syscalls/sys_enter_setuid/format
+    // Check /sys/kernel/tracing/events/syscalls/sys_enter_setuid/format
     // for the args format
     data.uid = args->uid;
     data.ts = bpf_ktime_get_ns();

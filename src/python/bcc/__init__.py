@@ -1069,7 +1069,7 @@ class BPF(object):
         provided regular expression.
 
         To obtain a list of kernel tracepoints, use the tplist tool or cat the
-        file /sys/kernel/debug/tracing/available_events.
+        file /sys/kernel/tracing/available_events.
 
         Examples:
             BPF(text).attach_tracepoint(tp="sched:sched_switch", fn_name="on_switch")
