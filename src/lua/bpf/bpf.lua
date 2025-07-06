@@ -1487,7 +1487,7 @@ local tracepoint_mt = {
 -- Open tracepoint
 local function tracepoint_open(path, pid, cpu, group_fd)
 	-- Open tracepoint and compile tracepoint type
-	local tp = assert(S.perf_tracepoint('/sys/kernel/debug/tracing/events/'..path))
+	local tp = assert(S.perf_tracepoint('/sys/kernel/tracing/events/'..path))
 	local tp_type = assert(cdef.tracepoint_type(path))
 	-- Open tracepoint reader and create interface
 	local reader = assert(S.perf_attach_tracepoint(tp, pid, cpu, group_fd))
@@ -1621,7 +1621,7 @@ return setmetatable({
 	end,
 	tracelog = function(path)
 		assert(trace_check_enabled())
-		path = path or '/sys/kernel/debug/tracing/trace_pipe'
+		path = path or '/sys/kernel/tracing/trace_pipe'
 		return io.open(path, 'r')
 	end,
 	ntoh = builtins.ntoh, hton = builtins.hton,
